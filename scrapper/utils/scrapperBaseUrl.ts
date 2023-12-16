@@ -1,0 +1,1 @@
+export const scrapperBaseUrl = "http://localhost:5000/api/v1";
