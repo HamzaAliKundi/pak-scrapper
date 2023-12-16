@@ -1,5 +1,3 @@
-// import { zameenPropertyTypeRent, zameenPropertyTypeBuy, zameenCityUrlEnum } from '../utils/url-helper-enums';
-
 export const getZameenExtractedCityName = (_city: string) => {
     const cityName = _city.split('-')[0]
     return cityName.toLowerCase();
@@ -78,6 +76,7 @@ export const propertTypes = [
     zameenPropertyTypeBuy.Plots,
     zameenPropertyTypeBuy.Commercial,
 ];
+
 export const cities = [
     zameenCityUrlEnum.Islamabad,
     zameenCityUrlEnum.Karachi,
