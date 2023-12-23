@@ -30,12 +30,20 @@ let graanaPropertyTypeBuy = {
     "Commercial": "commercial-properties-sale"
 }
 
+export const makeGraanaUrl = (_type: string, _propertyType: string, _city: string, _page: number) => {
+    const url = `https://www.graana.com/${_type}/${_propertyType}-${_city}/?orderBy=1&page=${_page}&pageSize=30`;
+    return url;
+};
+
 export const types = [graanaType.rent, graanaType.buy];
 
-export const propertyTypes = [
+export const propertyTypesRent = [
     graanaPropertyTypeRent.Residentials,
     graanaPropertyTypeRent.Plots,
     graanaPropertyTypeRent.Commercial,
+];
+
+export const propertyTypesBuy = [
     graanaPropertyTypeBuy.Residentials,
     graanaPropertyTypeBuy.Plots,
     graanaPropertyTypeBuy.Commercial,

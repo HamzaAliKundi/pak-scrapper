@@ -19,13 +19,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/v1", router);
 
 app.get('/ping', (_req: Request, _res: Response) => {
-    _res.json("sada");
+    _res.json("status : 200");
 });
+
 
 app.use(errorHandler);
 
 setTimeout(() => {
     realEstateScrapper();
-}, 15000);
+}, 5000);
 
 app.listen(port, () => console.log(chalk.green(`App is listining on port : ${port}!`)))

@@ -15,5 +15,20 @@ export const Config: IConfig = {
         url: 'a._7ac32433[aria-label="Listing link"]',
         pictureClass: 'picture._219b7e0a',
         imgClass: "img._8f499ba9"
+    },
+
+    graana: {
+        articleKey: "div.mui-style-17zbhp0",
+
+        price: "div.mui-style-gz23my",
+        beds: 'div.MuiTypography-root.MuiTypography-body2New.mui-style-1548769',
+        baths: 'div.MuiTypography-root.MuiTypography-body2New.mui-style-1548769',
+        area: 'div.MuiTypography-root.MuiTypography-body2New.mui-style-1548769',
+        location: "h5.mui-style-3bzwbl",
+        title: "h2.c0df3811",
+        propertyType: "div.mui-style-18id7mx"
+        // url: 'a._7ac32433[aria-label="Listing link"]',
+        // pictureClass: 'picture._219b7e0a',
+        // imgClass: "img._8f499ba9"
     }
 };
