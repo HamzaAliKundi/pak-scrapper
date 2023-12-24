@@ -26,9 +26,8 @@ export const Config: IConfig = {
         area: 'div.MuiTypography-root.MuiTypography-body2New.mui-style-1548769',
         location: "h5.mui-style-3bzwbl",
         title: "h2.c0df3811",
-        propertyType: "div.mui-style-18id7mx"
-        // url: 'a._7ac32433[aria-label="Listing link"]',
-        // pictureClass: 'picture._219b7e0a',
-        // imgClass: "img._8f499ba9"
+        propertyType: "div.mui-style-18id7mx",
+        url: '.mui-style-79elbk a',
+        imageUrl: "img.swiper-lazy.swiper-lazy-loaded"
     }
 };

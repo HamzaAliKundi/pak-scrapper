@@ -1,9 +1,11 @@
 import dayjs from 'dayjs';
 import chalk from 'chalk';
+import axios from 'axios';
 import { getHtmlDocument } from '../../utils/html';
 import { scriptAnalytics } from '../../../backend/controllers/real-estate/scriptAnalytics';
 import { cities, graanaType, makeGraanaUrl, propertyTypesBuy, propertyTypesRent, types } from './_helper';
 import { extractGraanaAds } from './extracter';
+import { scrapperBaseUrl } from '../../utils/scrapperBaseUrl';
 
 export const graanaScript = async () => {
     const startTime = new Date();
@@ -27,8 +29,35 @@ export const graanaScript = async () => {
 
                         const driver = await getHtmlDocument(url);
                         if (!driver) break;
-                        let zameenAds = await extractGraanaAds(driver);
+                        let graanaAds = await extractGraanaAds(driver);
                         await driver.quit();
+
+                        let ads = graanaAds?.map(ad => {
+                            return {
+                                ...ad,
+                                website: "graana.com",
+                                city: city.toLowerCase(),
+                                type: "rent",
+                            }
+                        });
+
+                        console.log(ads)
+                        let dupliCount = 0;
+                        try {
+                            await axios.post(`${scrapperBaseUrl}/real-estate/ads`, ads).then((res) => {
+                                dupliCount = res.data.duplicateAds;
+                                if (ads)
+                                    count += ads?.length - res.data.duplicateAds;
+                            }).catch((err) => {
+                                console.log("Error : ", err)
+                            });
+                        } catch (error) {
+                            scriptErrors.push(error);
+                            console.log("Error while adding ads to db", error);
+                        }
+                        page++;
+                        console.log(chalk.gray("Duplicate Count : ", dupliCount));
+                        if (dupliCount > 20 || (ads?.length !== undefined && ads.length < 30)) break;
                     }
                 }
             }
@@ -38,8 +67,39 @@ export const graanaScript = async () => {
                     let page = 1;
                     while (true) {
                         let url = makeGraanaUrl(type, propertyType, city, page);
-                        console.log(url);
-                        break;
+                        console.log(chalk.gray("Url : ", url));
+
+                        const driver = await getHtmlDocument(url);
+                        if (!driver) break;
+                        let graanaAds = await extractGraanaAds(driver);
+                        await driver.quit();
+
+                        let ads = graanaAds?.map(ad => {
+                            return {
+                                ...ad,
+                                website: "graana.com",
+                                city: city.toLowerCase(),
+                                type: "buy",
+                            }
+                        });
+
+                        console.log(ads)
+                        let dupliCount = 0;
+                        try {
+                            await axios.post(`${scrapperBaseUrl}/real-estate/ads`, ads).then((res) => {
+                                dupliCount = res.data.duplicateAds;
+                                if (ads)
+                                    count += ads?.length - res.data.duplicateAds;
+                            }).catch((err) => {
+                                console.log("Error : ", err)
+                            });
+                        } catch (error) {
+                            scriptErrors.push(error);
+                            console.log("Error while adding ads to db", error);
+                        }
+                        page++;
+                        console.log(chalk.gray("Duplicate Count : ", dupliCount));
+                        if (dupliCount > 20 || (ads?.length !== undefined && ads.length < 30)) break;
                     }
                 }
             }

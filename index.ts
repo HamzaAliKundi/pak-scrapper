@@ -22,7 +22,6 @@ app.get('/ping', (_req: Request, _res: Response) => {
     _res.json("status : 200");
 });
 
-
 app.use(errorHandler);
 
 setTimeout(() => {

@@ -4,7 +4,7 @@ import { scriptAnalytics } from '../../controllers/real-estate/scriptAnalytics';
 
 const realEstateRouter = express.Router();
 
-realEstateRouter.post("/zameen/ads", ads);
-realEstateRouter.post("/zameen/analytics", scriptAnalytics);
+realEstateRouter.post("/ads", ads);
+realEstateRouter.post("/analytics", scriptAnalytics);
 
 export default realEstateRouter;
