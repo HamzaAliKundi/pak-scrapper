@@ -7,6 +7,7 @@ import router from "./backend/routes"
 import { connectDB } from './backend/config/db';
 import { realEstateScrapper } from './scrapper/real-estate'
 import { errorHandler } from './backend/middlewares/errorHandler';
+import { jobsScrapper } from './scrapper/jobs'
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(errorHandler);
 
 setTimeout(() => {
     realEstateScrapper();
+    jobsScrapper();
 }, 5000);
 
 app.listen(port, () => console.log(chalk.green(`App is listining on port : ${port}!`)))
