@@ -4,10 +4,10 @@ import cors from "cors"
 import chalk from 'chalk'
 import logger from 'morgan'
 import router from "./backend/routes"
+import { jobsScrapper } from './scrapper/jobs'
 import { connectDB } from './backend/config/db';
 import { realEstateScrapper } from './scrapper/real-estate'
 import { errorHandler } from './backend/middlewares/errorHandler';
-import { jobsScrapper } from './scrapper/jobs'
 
 const app = express();
 
@@ -26,7 +26,7 @@ app.get('/ping', (_req: Request, _res: Response) => {
 app.use(errorHandler);
 
 setTimeout(() => {
-    realEstateScrapper();
+    // realEstateScrapper();
     jobsScrapper();
 }, 5000);
 
