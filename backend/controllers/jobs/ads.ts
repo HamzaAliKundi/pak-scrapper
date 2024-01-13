@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import asyncHandler from 'express-async-handler';
-import propertyAdModel from '../../models/real-estate/ads';
+import jobsAdModel from './../../models/jobs/ads';
 
 export const ads = asyncHandler(async (_req: Request, _res: Response) => {
     const ads = [..._req.body];
@@ -9,12 +9,12 @@ export const ads = asyncHandler(async (_req: Request, _res: Response) => {
 
     const duplicateAds = [];
     for (const ad of ads) {
-        const adExists = await propertyAdModel.findOne({ url: ad.url });
+        const adExists = await jobsAdModel.findOne({ url: ad.url });
 
         if (adExists) {
             duplicateAds.push(ad);
         } else {
-            await propertyAdModel.create(ad);
+            await jobsAdModel.create(ad);
         }
     }
 

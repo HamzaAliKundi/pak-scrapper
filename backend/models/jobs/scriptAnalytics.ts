@@ -1,6 +1,6 @@
 import { Schema, Document, model } from 'mongoose';
 
-interface propertyScript extends Document {
+interface jobScript extends Document {
     startTime: Date,
     totalCount: number
     timeTakenToExecute: number,
@@ -8,7 +8,7 @@ interface propertyScript extends Document {
     website: string,
 }
 
-const scriptSchema = new Schema<propertyScript>({
+const scriptSchema = new Schema<jobScript>({
 
     startTime: {
         type: Date,
@@ -35,6 +35,6 @@ const scriptSchema = new Schema<propertyScript>({
     }
 );
 
-const propertyScriptModel = model<propertyScript>('propertyScript', scriptSchema);
+const jobScriptModel = model<jobScript>('jobScript', scriptSchema);
 
-export default propertyScriptModel;
+export default jobScriptModel;

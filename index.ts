@@ -26,7 +26,7 @@ app.get('/ping', (_req: Request, _res: Response) => {
 app.use(errorHandler);
 
 setTimeout(() => {
-    // realEstateScrapper();
+    realEstateScrapper();
     jobsScrapper();
 }, 5000);
 

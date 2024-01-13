@@ -1,6 +1,6 @@
 import { Schema, Document, model } from 'mongoose';
 
-interface ad extends Document {
+interface propertyAd extends Document {
     title: string;
     type: string;
     city: string;
@@ -15,7 +15,7 @@ interface ad extends Document {
     imageUrl?: string;
 }
 
-const adASchema = new Schema<ad>({
+const adASchema = new Schema<propertyAd>({
     title: {
         type: String,
         trim: true,
@@ -71,6 +71,6 @@ const adASchema = new Schema<ad>({
         timestamps: true,
     });
 
-const adModel = model<ad>('ad', adASchema);
+const propertyAdModel = model<propertyAd>('propertyAd', adASchema);
 
-export default adModel;
+export default propertyAdModel;
