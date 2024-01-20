@@ -4,7 +4,7 @@ type IConfig = {
 
 export const Config: IConfig = {
     rooze: {
-        articleKey: "li.ef447dde",
+        articleKey: "div#jobs.jlist.float-left div.job",
 
         // price: "span.f343d9ce",
         // beds: 'span._984949e5[aria-label="Beds"]',
