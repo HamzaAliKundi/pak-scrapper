@@ -26,8 +26,8 @@ app.get('/ping', (_req: Request, _res: Response) => {
 app.use(errorHandler);
 
 setTimeout(() => {
-    // realEstateScrapper();
     jobsScrapper();
+    realEstateScrapper();
 }, 15000);
 
 app.listen(port, () => console.log(chalk.green(`🚀 App is listining on port : ${port}!`)))

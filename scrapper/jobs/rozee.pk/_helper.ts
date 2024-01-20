@@ -1,10 +1,10 @@
-export const makeUrl = (page: number) => {
+export const makeUrl = (_page: number) => {
     let url = ""
-    if (page === 0) {
+    if (_page === 0) {
         let pageUrl = `https://www.rozee.pk/job/jsearch/q/all`
         url = pageUrl
     } else {
-        let pageUrl = `https://www.rozee.pk/job/jsearch/q/all/fpn/${20}`
+        let pageUrl = `https://www.rozee.pk/job/jsearch/q/all/fpn/${_page}`
         url = pageUrl
     }
 

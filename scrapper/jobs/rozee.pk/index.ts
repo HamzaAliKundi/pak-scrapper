@@ -29,7 +29,6 @@ export const rozeeScript = async () => {
             }
         });
 
-        console.log("ads", ads);
         let dupliCount = 0;
         try {
             await axios.post(`${scrapperBaseUrl}/jobs/ads`, ads).then((res) => {
@@ -43,9 +42,10 @@ export const rozeeScript = async () => {
             scriptErrors.push(error);
             console.log("Error while adding ads to db", error);
         }
-        page++;
+        
+        page += 20; 
         console.log(chalk.gray("Duplicate Count : ", dupliCount));
-        if (dupliCount > 20 || (ads?.length !== undefined && ads.length < 30)) break;
+        if (dupliCount > 15) break;
     }
 
     const timeTakenToExecute = Math.round((dayjs().valueOf() - scriptStartMillis) / 1000);
